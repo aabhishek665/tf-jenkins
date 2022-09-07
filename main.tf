@@ -43,6 +43,7 @@ resource "aws_security_group" "my_security_group" {
 # Create AWS ec2 instance
 resource "aws_instance" "myFirstInstance" {
   ami           = var.ami_id
+  vpc_id        = aws_vpc.mainvpc.id
   instance_type = var.instance_type
   security_groups= [aws_security_group.my_security_group.id]
   tags= {
