@@ -2,10 +2,16 @@ provider "aws" {
   region = var.aws_region
 }
 
+#Create aws vpc 
+resource "aws_vpc" "mainvpc" {
+  cidr_block = "10.1.0.0/16"
+}
+
 #Create security group with firewall rules
 resource "aws_security_group" "my_security_group" {
   name        = var.security_group
   description = "security group for Ec2 instance"
+  vpc_id = aws_vpc.mainvpc.id
 
   ingress {
     from_port   = 8080
