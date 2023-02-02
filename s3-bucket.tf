@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "mydev-s3-bucket" {
-  bucket_prefix = var.bucket_prefix
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tfjenkins-test-bucket"
   acl = var.acl
   
    versioning {
